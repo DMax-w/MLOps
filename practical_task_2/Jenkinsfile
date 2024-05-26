@@ -6,7 +6,7 @@ pipeline {
         TEST_PATH       = 'test/test.csv'
         TEST_PREP_PATH  = 'test/test_prep.csv'
         MODEL_PATH      = 'model/model.pkl'
-        PROJECT_PATH    = './MLOps/practical_task_2'
+        PROJECT_PATH    = './practical_task_2'
     }
     stages {
         stage('Setup Python Environment') {
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh '''
                 . ./.venv/bin/activate;
-                python3 $PROJECT_PATH/src/data_creation.py;
+                python3 $PROJECT_PATH/scripts/data_creation.py;
                 '''
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 . ./.venv/bin/activate;
-                python3 $PROJECT_PATH/src/data_creation.py;
+                python3 $PROJECT_PATH/scripts/data_creation.py;
                 '''
             }
         }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh '''
                 . ./.venv/bin/activate;
-                python3 $PROJECT_PATH/src/data_preprocessing.py;
+                python3 $PROJECT_PATH/scripts/data_preprocessing.py;
                 '''
             }
         }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh '''
                 . ./.venv/bin/activate;
-                python3 $PROJECT_PATH/src/model_preparation.py;
+                python3 $PROJECT_PATH/scripts/model_preparation.py;
                 '''
             }
         }
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh '''
                 . ./.venv/bin/activate;
-                python3 $PROJECT_PATH/src/model_testing.py;
+                python3 $PROJECT_PATH/scripts/model_testing.py;
                 '''
             }
         }
