@@ -6,7 +6,7 @@ pipeline {
         TEST_PATH       = 'test/test.csv'
         TEST_PREP_PATH  = 'test/test_prep.csv'
         MODEL_PATH      = 'model/model.pkl'
-        PROJECT_PATH    = './practical_task_2'
+        PROJECT_PATH    = 'MLOps/practical_task_2'
     }
     stages {
         stage('Setup Python Environment') {
