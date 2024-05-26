@@ -6,7 +6,9 @@ __Студент группы:__ *РИМ-130962*
 
 ## Описание
 
-Для `Jenkins` подготовлен `Jenkinsfile` в котором описан `pipeline`
+Для `Jenkins` подготовлен `Jenkinsfile` в котором описан `pipeline`.
+Запускает `ML` конвейер `pipeline`, который загружает из репозитория `https://github.com/DMax-w/MLOps` 
+из ветки `practical_task_2` `python` файлы и последовательно их запускает.
 
 ## Этапы работы (`pipeline` в `Jenkinsfile`):
 
