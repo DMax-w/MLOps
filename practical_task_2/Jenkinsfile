@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    environment {
+        TRAIN_PATH      = 'train/train.csv'
+        TRAIN_PREP_PATH = 'train/train_prep.csv'
+        TEST_PATH       = 'test/test.csv'
+        TEST_PREP_PATH  = 'test/test_prep.csv'
+        MODEL_PATH      = 'model/model.pkl'
+        PROJECT_PATH    = 'MLOps/practical_task_2'
+    }
+    stages {
+        stage('Setup Python Environment') {
+            steps {
+                python3 -m venv ./.venv;
+                . ./.venv/bin/activate;
+                pip install -r  $PROJECT_PATH/requirements.txt;
+            }
+        }
+        stage('Lint with flake8') {
+            steps {
+                . venv/bin/activate;
+                python3 $PROJECT_PATH/src/data_creation.py;
+            }
+        }
+        stage('Create Data') {
+            steps {
+                . venv/bin/activate;
+                python3 $PROJECT_PATH/src/data_creation.py;
+            }
+        }
+        stage('Preprocess Data') {
+            steps {
+                . venv/bin/activate;
+                python3 $PROJECT_PATH/src/data_preprocessing.py;
+            }
+        }
+        stage('Prepare Model') {
+            steps {
+                . venv/bin/activate;
+                python3 $PROJECT_PATH/src/model_preparation.py;
+            }
+        }
+        stage('Test Model') {
+            steps {
+                . venv/bin/activate;
+                python3 $PROJECT_PATH/src/model_testing.py;
+            }
+        }
+    }
+}
