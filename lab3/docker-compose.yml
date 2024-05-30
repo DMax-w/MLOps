@@ -1,0 +1,11 @@
+version: '3.8'
+name: "mlops"
+services:
+  lab3-app:
+    image: lab3-app_image
+    container_name: lab3-app_container
+    ports:
+      - "7070:7070"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
